@@ -17,7 +17,7 @@ function Contact() {
     state: '',
     city: '',
     phone: '',
-    companyname: '',
+    company: '',
     message: '',
   });
 
@@ -95,13 +95,13 @@ function Contact() {
       ['state', stateName],
       ['city', cityName],
       ['phone', finalPhone],
-      ['companyname', formData.companyname],
+      ['company', formData.company],
       ['message', formData.message]
     ]).toString();
 
     try {
       const response = await fetch(
-         process.env.REACT_APP_GOOGLE_FORM_URL || '',
+         process.env.REACT_APP_GOOGLE_FORM_URL,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -122,7 +122,7 @@ function Contact() {
       if (result.result === 'success') {
         setStatus({ type: 'success', message: 'Message sent successfully!' });
         setFormData({
-          name: '', email: '', phone: '', companyname: '',
+          name: '', email: '', phone: '', company: '',
           message: '', country: '', state: '', city: ''
         });
         setIsCaptchaVerified(false);
@@ -225,9 +225,9 @@ function Contact() {
             </div>
             <input
               type="text"
-              name="companyname"
+              name="company"
               placeholder="Company Name"
-              value={formData.companyname}
+              value={formData.company}
               onChange={handleChange}
               className="w-full p-3 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
