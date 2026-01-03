@@ -100,23 +100,19 @@ function Contact() {
     ]).toString();
 
     try {
-      const response = await fetch(
-         process.env.REACT_APP_GOOGLE_FORM_URL,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: formBody,
-        }
-      );
+      // Use the Vercel API route instead of calling Google Forms directly
+      // This avoids CORS issues and keeps the form URL secure
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formData: formBody }),
+      });
 
-      const text = await response.text();
-      let result = {};
+      // The API route always returns JSON
+      const result = await response.json();
 
-      try {
-        result = JSON.parse(text);
-      } catch (e) {
-        console.warn("Non-JSON response:", text);
-        result.result = 'success';
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit form');
       }
 
       if (result.result === 'success') {
