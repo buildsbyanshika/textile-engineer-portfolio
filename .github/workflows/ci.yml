@@ -36,10 +36,14 @@ jobs:
         run: npm run build
         env:
           CI: false
+          
       - name: Build and Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v7
         with:
           image: buildbyanshika/textile-engineer-portfolio
           registry: docker.io
+          directory: ./my-app
+          dockerfile: ./my-app/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          buildArgs: REACT_APP_GOOGLE_FORM_URL=${{ secrets.REACT_APP_GOOGLE_FORM_URL }}
