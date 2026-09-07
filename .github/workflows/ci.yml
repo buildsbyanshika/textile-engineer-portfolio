@@ -43,7 +43,7 @@ jobs:
           image: buildbyanshika/textile-engineer-portfolio
           registry: docker.io
           directory: ./my-app
-          dockerfile: Dockerfile
+          dockerfile: ./my-app/Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           buildArgs: |
