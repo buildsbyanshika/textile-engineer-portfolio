@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "main", "new-ci-workflow" ]
   pull_request:
     branches: [ "master" ]
 
@@ -36,3 +36,10 @@ jobs:
         run: npm run build
         env:
           CI: false
+      - name: Build and Push Docker Image
+        uses: mr-smithers-excellent/docker-build-push@v7
+        with:
+          image: buildbyanshika/textile-engineer-portfolio
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
