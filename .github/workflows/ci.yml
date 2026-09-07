@@ -1,0 +1,50 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "master", "main", "new-ci-workflow" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Sets the default execution folder for ALL steps in this job
+    defaults:
+      run:
+        working-directory: ./my-app
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: my-app/package-lock.json
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build React App
+        run: npm run build
+        env:
+          CI: false
+          
+      - name: Build and Push Docker Image
+        uses: mr-smithers-excellent/docker-build-push@v7
+        with:
+          image: buildbyanshika/textile-engineer-portfolio
+          registry: docker.io
+          directory: ./my-app
+          dockerfile: ./my-app/Dockerfile
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          buildArgs: |
+            REACT_APP_GOOGLE_FORM_URL=${{ secrets.REACT_APP_GOOGLE_FORM_URL }}
