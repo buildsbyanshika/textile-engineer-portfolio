@@ -1,4 +1,6 @@
 // src/components/FAQ.js
+"use client";
+
 import React, { useState } from "react";
 import FAQData from "../data/faqData";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Country, State, City } from 'country-state-city';
 import { getCountryCallingCode } from 'libphonenumber-js';
 import useResetAnimation from "../hooks/useAnimationOnSectionChange";
-import CaptchaSection from '../components/CaptchaSection ';
+import CaptchaSection from '../components/CaptchaSection';
 
 
 function Contact() {
@@ -48,7 +48,7 @@ function Contact() {
       setPhoneCode('');
     }
     setFormData(prev => ({ ...prev, state: '', city: '' }));
-  }, [formData.country]);
+  }, [formData.country, countries, states]);
 
   useEffect(() => {
     if (formData.country && formData.state) {
@@ -62,7 +62,7 @@ function Contact() {
       setCities([]);
     }
     setFormData(prev => ({ ...prev, city: '' }));
-  }, [formData.state]);
+  }, [formData.state,states, formData.country,countries]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -274,13 +274,15 @@ function Contact() {
           </form>
           <div className="flex-1 rounded-xl overflow-hidden shadow-lg min-h-[350px]">
             <iframe
+              title="Google Map"
               src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d241317.11609945508!2d72.5713622!3d23.022505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1665060912345!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: '350px' }}
               allowFullScreen
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
+              referrerpolicy="no-referrer-when-downgrade"
+              >
             </iframe>
           </div>
         </div>

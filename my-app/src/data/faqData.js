@@ -18,7 +18,7 @@ const faqData = [
   {
     id: 4,
     question: "Are you available for project-based work or consultancy?",
-    answer: "Yes, I’m open to both long-term maintenance contracts and short-term installations or troubleshooting assignments—locally or abroad.",
+    answer: "Yes, I'm open to both long-term maintenance contracts and short-term installations or troubleshooting assignments—locally or abroad.",
   },
   {
     id: 5,

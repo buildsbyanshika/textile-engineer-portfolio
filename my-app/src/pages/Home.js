@@ -1,5 +1,7 @@
 // src/pages/Home.js
-import React, { useState,useEffect,useRef } from "react";
+"use client";
+
+import React, { useEffect,useRef } from "react";
 import bgimg from '../assets/images/Engineer_bg.png';
 
 function Home() {

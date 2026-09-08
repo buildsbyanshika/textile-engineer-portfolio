@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Masonry from 'react-masonry-css';
 import { galleryImages } from '../data/galleryData';
@@ -36,7 +38,7 @@ function Gallery  () {
             >
               <img
                 src={image}
-                alt={`Gallery image ${index + 1}`}
+                alt={`Gallery ${index + 1}`}
                 className="w-full h-64 object-cover rounded-lg"
               />
             </div>
@@ -47,7 +49,7 @@ function Gallery  () {
           <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
             <img
               src={modalImg}
-              alt="Zoomed image"
+              alt="Zoomed"
               className="w-[50vw] h-[80vh] object-cover  rounded-lg shadow-2xl bg-black"
             />
             <button

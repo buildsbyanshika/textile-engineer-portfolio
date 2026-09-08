@@ -1,5 +1,4 @@
 import React from 'react';
-import useResetAnimation from '../hooks/useAnimationOnSectionChange';
 
 const testimonials = [
   {
@@ -20,8 +19,6 @@ const testimonials = [
 ];
 
 function Testimonials () {
-
-  const fadeInRef = useResetAnimation("fade-in-up", []);
 
   return(
   <section id="testimonials" className="py-12 bg-blue-500">

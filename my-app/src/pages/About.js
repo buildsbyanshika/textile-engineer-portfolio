@@ -1,4 +1,6 @@
 // src/pages/About.js
+"use client";
+
 import React, { useState } from "react";
 import AccordionCard from "../components/AccordionCard";
 import homeCards from "../data/homeCards";

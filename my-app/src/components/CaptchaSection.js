@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { RotateCcw } from "lucide-react"; 
 
@@ -13,7 +15,7 @@ function generateCaptcha ()  {
 const CaptchaSection = ({ onVerified }) => {
   const [captcha, setCaptcha] = useState("");
   const [userInput, setUserInput] = useState("");
-  const [isVerified, setIsVerified] = useState(false);
+  const [ setIsVerified] = useState(false);
 
   useEffect(() => {
     setCaptcha(generateCaptcha());

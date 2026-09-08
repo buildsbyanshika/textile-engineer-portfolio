@@ -1,8 +1,9 @@
+"use client";
+
 import React, { useState } from 'react';
 import loom from "./../assets/images/Engineer_bg.png";
 import fabric from "./../assets/images/Gallery_5.jpeg";
 import quality from "./../assets/images/Gallery_3.jpeg";
-import useResetAnimation from "../hooks/useAnimationOnSectionChange";
 import ModalProjectDetail from "./ModalProjectDetail";
 
 
@@ -32,8 +33,6 @@ const projects = [
 ];
 
 function TextileProjects () {
-  
-   const fadeInRef = useResetAnimation("fade-in-up", []);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 

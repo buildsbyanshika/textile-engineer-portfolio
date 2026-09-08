@@ -1,6 +1,8 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 
-export default function useResetAnimation(className, dependencies = []) {
+export default function useResetAnimation(className = []) {
  const ref = useRef();
 
   useEffect(() => {
@@ -9,7 +11,7 @@ export default function useResetAnimation(className, dependencies = []) {
     node.classList.remove(className);
     void node.offsetWidth;
     node.classList.add(className);
-  }, dependencies);
+  }, );
 
   return ref;
 }
