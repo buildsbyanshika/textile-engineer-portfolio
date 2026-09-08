@@ -15,7 +15,6 @@ function generateCaptcha ()  {
 const CaptchaSection = ({ onVerified }) => {
   const [captcha, setCaptcha] = useState("");
   const [userInput, setUserInput] = useState("");
-  const [ setIsVerified] = useState(false);
 
   useEffect(() => {
     setCaptcha(generateCaptcha());
@@ -24,7 +23,6 @@ const CaptchaSection = ({ onVerified }) => {
   const handleReload = () => {
     setCaptcha(generateCaptcha());
     setUserInput("");
-    setIsVerified(false);
     onVerified(false);
   };
 
@@ -32,7 +30,6 @@ const CaptchaSection = ({ onVerified }) => {
     const value = e.target.value;
     setUserInput(value);
     const verified = value === captcha;
-    setIsVerified(verified);
     onVerified(verified);
   };
 
@@ -46,7 +43,7 @@ const CaptchaSection = ({ onVerified }) => {
         type="text"
         value={userInput}
         onChange={handleChange}
-        className="w-full p-2 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="w-full p-2 bg-white rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         placeholder="Enter CAPTCHA here"
       />
       <button
