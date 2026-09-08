@@ -62,7 +62,7 @@ function Contact() {
       setCities([]);
     }
     setFormData(prev => ({ ...prev, city: '' }));
-  }, [formData.state,states, formData.country,countries]);
+  }, [formData.state, formData.country, countries, states]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -281,8 +281,7 @@ function Contact() {
               style={{ border: 0, minHeight: '350px' }}
               allowFullScreen
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              >
+              referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
         </div>
