@@ -2,10 +2,8 @@ name: Publish Docker Image to Docker Hub
 
 on:
   push:
-    branches: [ "master", "main" , "new-ci-workflow",]
     tags: [ 'v*.*.*' ]
-  pull_request:
-    branches: [ "master", "main" ]
+  workflow_dispatch: 
 
 jobs:
   build:
