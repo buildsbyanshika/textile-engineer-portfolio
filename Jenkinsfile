@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        SERVER_CREDENTIAL = credentials('server-credentials)
+        SERVER_CREDENTIAL = credentials('server-credentials')
     }
                                         
     parameters {
