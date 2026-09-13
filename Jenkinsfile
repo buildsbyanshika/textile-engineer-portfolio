@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
     agent any
     
@@ -11,9 +13,20 @@ pipeline {
     }
                                         
     stages {
+        
+        stage("init") {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
+        
         stage("build") {
             steps {
-                echo "Building the Application.."
+                script {
+                    gv.buildApp()
+                }
             }
         }
         
@@ -24,16 +37,19 @@ pipeline {
                 }
             }
             steps {
-                echo "Testing the Application.."
+                script {
+                    gv.testApp()
+                }
             }
         }
         
         stage("deploy") {
             steps {
-                echo "Deploying the Application.."
-                echo "deploying with ${SERVER_CREDENTIAL}"
-                echo "deploying version ${params.VERSION}"
+                script {
+                    gv.deployApp()
+                }
             }
         }
+        
     }
 }
